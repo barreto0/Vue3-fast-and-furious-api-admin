@@ -4,9 +4,12 @@
       <form
         class="bg-zinc-100 max-w-sm mx-auto rounded-xl shadow-xl overflow-hidden p-6 space-y-10"
       >
-        <h2 class="text-4xl font-bold text-center text-zinc-700">
+        <p class="text-4xl font-bold text-center text-zinc-700">
           Velozes e Furiosos API - Admin
-        </h2>
+        </p>
+        <p class="text-base font-bold text-center text-zinc-700">
+          A vida é simples,<br />é tomar decisões e não se arrepender.
+        </p>
         <div
           class="f-outline px-2 relative border rounded-lg focus-within:border-indigo-500"
         >
