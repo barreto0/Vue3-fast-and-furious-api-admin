@@ -43,6 +43,7 @@
 
         <div class="flex items-center justify-end mt-4">
           <button
+            @click="$router.push('/dashboard')"
             class="px-6 py-2 ml-4 font-semibold cursor-pointer text-center focus:outline-none transition hover:shadow-lg shadow hover:bg-zinc-900 rounded-full text-zinc-100 bg-zinc-500"
           >
             Acelera!
@@ -52,3 +53,7 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {};
+</script>

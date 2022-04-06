@@ -1,8 +1,33 @@
 import SignIn from "../components/user/SignIn.vue";
 import NotFound from "../components/errors/NotFound.vue";
+import DashboardHome from "../components/dashboard/DashboardHome.vue";
+import ChooseInteractionType from "../components/user/ChooseInteractionType.vue";
 
 export const routes = [
-  { path: "/", component: SignIn, title: "Sign In", meta: { guest: true } },
+  {
+    path: "/",
+    component: ChooseInteractionType,
+    title: "ChooseInteractionType",
+    meta: { guest: true },
+  },
+  {
+    path: "/signin",
+    component: SignIn,
+    title: "Sign In",
+    meta: { guest: true },
+  },
+  {
+    path: "/dashboard",
+    component: DashboardHome,
+    title: "Dashboard",
+    meta: { guest: true },
+  },
+  // {
+  //   path: "/dashboard",
+  //   component: DashboardHome,
+  //   title: "Dashboard",
+  //   meta: { requiresAuth: true },
+  // },
   {
     path: "/:pathMatch(.*)*",
     component: NotFound,
