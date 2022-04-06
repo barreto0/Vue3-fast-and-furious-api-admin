@@ -10,35 +10,29 @@
         <p class="text-base font-bold text-center text-zinc-700">
           A vida é simples,<br />é tomar decisões e não se arrepender.
         </p>
-        <div
-          class="f-outline px-2 relative border rounded-lg focus-within:border-indigo-500"
-        >
+        <div>
+          <label for="email" class="block text-gray-700 text-lg font-bold mb-2"
+            >Email</label
+          >
           <input
             type="email"
             name="email"
             placeholder=" "
-            class="block p-2 w-full text-lg appearance-none focus:outline-none bg-transparent"
+            class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-          <label
-            for="email"
-            class="absolute ml-5 top-0 text-lg text-gray-700 bg-zinc-100 mt-2 -z-1 duration-300 origin-0"
-            >Email</label
-          >
         </div>
-        <div
-          class="f-outline px-2 relative border rounded-lg focus-within:border-indigo-500"
-        >
+        <div>
+          <label
+            for="password"
+            class="block text-gray-700 text-lg font-bold mb-2"
+            >Senha</label
+          >
           <input
             type="password"
             name="password"
             placeholder=" "
-            class="block p-2 w-full text-lg appearance-none focus:outline-none bg-transparent"
+            class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-          <label
-            for="password"
-            class="absolute ml-5 top-0 text-lg text-gray-700 bg-zinc-100 mt-2 -z-1 duration-300 origin-0"
-            >Senha</label
-          >
         </div>
 
         <div class="flex items-center justify-end mt-4">

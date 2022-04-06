@@ -27,6 +27,7 @@
           <p class="font-medium text-xl text-center">Área restrita</p>
         </div>
         <div
+          @click="$router.push('/register-quote')"
           class="cursor-pointer bg-zinc-100 rounded-xl shadow-xl p-4 space-y-10"
         >
           <img
