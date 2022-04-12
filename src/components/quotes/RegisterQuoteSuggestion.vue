@@ -1,8 +1,11 @@
 <template>
   <div class="grid h-screen place-items-center">
     <div class="w-1/2">
-      <p class="text-center text-5xl font-bold text-zinc-100 mb-20">
+      <p class="text-center text-5xl font-bold text-zinc-100 mb-5">
         Cadastrar sugestão de frase
+      </p>
+      <p class="text-center text-3xl font-bold text-zinc-100 mb-14">
+        "50% de alguma coisa é melhor do que 100% de nada."
       </p>
       <div class="mb-10">
         <label
