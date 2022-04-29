@@ -3,6 +3,7 @@ import NotFound from "../components/errors/NotFound.vue";
 import DashboardHome from "../components/dashboard/DashboardHome.vue";
 import ChooseInteractionType from "../components/user/ChooseInteractionType.vue";
 import RegisterQuoteSuggestion from "../components/quotes/RegisterQuoteSuggestion.vue";
+import Analytics from "../components/analytics/Analytics.vue";
 
 export const routes = [
   {
@@ -27,6 +28,12 @@ export const routes = [
     path: "/dashboard",
     component: DashboardHome,
     title: "Dashboard",
+    meta: { guest: true },
+  },
+  {
+    path: "/analytics",
+    component: Analytics,
+    title: "Analytics",
     meta: { guest: true },
   },
   // {

@@ -1,34 +1,7 @@
 <template>
   <div>
-    <nav class="bg-zinc-100 px-2 sm:px-4 py-2.5 rounded-full sticky top-0 z-50">
-      <div class="flex flex-wrap justify-between">
-        <span class="ml-10 py-2 pr-4 pl-3 text-xl font-semibold"
-          >Velozes e Furiosos API</span
-        >
-        <div class="" id="mobile-menu">
-          <ul
-            class="ml-10 flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
-          >
-            <li>
-              <p
-                class="block py-2 pr-4 pl-3 text-zinc-900 hover:text-violet-600 text-lg"
-                aria-current="page"
-              >
-                Frases
-              </p>
-            </li>
-            <li>
-              <p
-                class="block py-2 pr-4 pl-3 text-zinc-900 hover:text-violet-600 text-lg"
-              >
-                Analytics
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
     <div class="h-screen">
+      <NavbarVue />
       <div class="mt-10 text-zinc-100 text-center text-lg font-bold">
         <p>Ativas<span class="ml-14">Pendentes</span></p>
       </div>
@@ -61,7 +34,7 @@
               <td class="px-6 py-4">Laptop</td>
               <td class="px-6 py-4">$2999</td>
               <td class="px-6 py-4 text-right text-violet-600">
-                <p>Editar</p>
+                <p class="cursor-pointer">Editar</p>
               </td>
             </tr>
           </tbody>
@@ -70,3 +43,13 @@
     </div>
   </div>
 </template>
+
+<script>
+import NavbarVue from "../common/Navbar.vue";
+export default {
+  name: "DashboardHome",
+  components: {
+    NavbarVue,
+  },
+};
+</script>
