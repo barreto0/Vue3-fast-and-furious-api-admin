@@ -10,7 +10,7 @@
           <thead class="text-xs text-zinc-100 uppercase bg-zinc-700">
             <tr>
               <th scope="col" class="px-6 py-3">ID</th>
-              <th scope="col" class="px-6 py-3">Cadastrado por</th>
+              <th scope="col" class="px-6 py-3">Frase</th>
               <th scope="col" class="px-6 py-3">Personagem/Autor</th>
               <th scope="col" class="px-6 py-3">Status</th>
               <th scope="col" class="px-6 py-3">
