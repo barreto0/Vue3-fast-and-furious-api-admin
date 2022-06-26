@@ -61,6 +61,7 @@
 
 <script>
 import { useAuth } from '../../../stores/AuthStore';
+import ApiService from '../../../services/ApiService';
 import axios from 'axios';
 
 export default {
@@ -75,6 +76,7 @@ export default {
 
   data() {
     return {
+      apiService: new ApiService(),
       loading: false,
       email: '',
       password: '',
@@ -86,25 +88,23 @@ export default {
   methods: {
     async login() {
       this.loading = true;
-      await axios
-        .post(import.meta.env.VITE_APP_BASE_URL + 'user/login', {
+      try {
+        const response = await this.apiService.post('user/login', {
           email: this.email,
           password: this.password,
-        })
-        .then((response) => {
-          this.loading = false;
-          localStorage.setItem('token', response.data.content.token);
-          localStorage.setItem(
-            'nickname',
-            response.data.content.user.nickname
-          );
-          this.$toast.success(response.data.message);
-          this.$router.push('/dashboard');
-        })
-        .catch((error) => {
-          this.loading = false;
-          this.$toast.error('Email ou senha incorretos');
         });
+        this.loading = false;
+        localStorage.setItem('token', response.data.content.token);
+        localStorage.setItem(
+          'nickname',
+          response.data.content.user.nickname
+        );
+        this.$toast.success(response.data.message);
+        this.$router.push('/dashboard');
+      } catch (error) {
+        this.loading = false;
+        this.$toast.error('Email ou senha incorretos');
+      }
     },
   },
 };
