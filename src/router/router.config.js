@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory } from "vue-router"; // modulo de roteamento da aplicação
-import { routes } from "./routes";
+import { createRouter, createWebHistory } from 'vue-router'; // modulo de roteamento da aplicação
+import { routes } from './routes';
+import { useAuth } from '../stores/AuthStore';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -8,21 +9,23 @@ const router = createRouter({
 
 // autenticação de rota
 router.beforeEach((to, from, next) => {
+  const authStore = useAuth();
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem('token')) {
       next();
       return;
     }
-    next({ path: "/" });
+    next({ path: '/' });
   } else {
     next();
   }
 });
 
 router.beforeEach((to, from, next) => {
+  const authStore = useAuth();
   if (to.matched.some((record) => record.meta.guest)) {
-    if (localStorage.getItem("token")) {
-      next({ path: "/dashboard" });
+    if (localStorage.getItem('token')) {
+      next({ path: '/dashboard' });
       return;
     }
     next();

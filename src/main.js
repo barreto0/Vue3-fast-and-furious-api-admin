@@ -1,7 +1,14 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import "./index.css";
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import App from './App.vue';
+import './index.css';
+import Toaster from '@meforma/vue-toaster';
 
-import router from "./router/router.config";
+import router from './router/router.config';
 
-createApp(App).use(router).mount("#app");
+const pinia = createPinia();
+const app = createApp(App);
+app.use(pinia);
+app.use(router);
+app.use(Toaster);
+app.mount('#app');
