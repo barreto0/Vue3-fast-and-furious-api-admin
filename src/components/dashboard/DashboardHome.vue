@@ -20,7 +20,7 @@
           </thead>
           <tbody>
             <tr
-              v-for="i in 10"
+              v-for="(phrase, i) in phrases"
               :key="i"
               class="bg-zinc-100 border-b-2 border-zinc-400 text-zinc-900"
             >
@@ -28,13 +28,17 @@
                 scope="row"
                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
               >
-                Apple MacBook Pro 17"
+                {{ phrase.id }}
               </th>
-              <td class="px-6 py-4">Sliver</td>
-              <td class="px-6 py-4">Laptop</td>
-              <td class="px-6 py-4">$2999</td>
+              <td class="px-6 py-4">{{ phrase.author.name }}</td>
+              <td class="px-6 py-4">{{ phrase.text }}</td>
+              <td class="px-6 py-4">
+                {{ phrase.active ? 'Ativa' : 'Inativa' }}
+              </td>
               <td class="px-6 py-4 text-right text-violet-600">
-                <p class="cursor-pointer">Editar</p>
+                <p class="cursor-pointer">
+                  {{ phrase.active ? 'Desativar' : 'Ativar' }}
+                </p>
               </td>
             </tr>
           </tbody>
@@ -45,11 +49,40 @@
 </template>
 
 <script>
-import NavbarVue from "../common/Navbar.vue";
+import NavbarVue from '../common/Navbar.vue';
+import ApiService from '../../services/ApiService';
 export default {
-  name: "DashboardHome",
+  name: 'DashboardHome',
+
   components: {
     NavbarVue,
+  },
+
+  data() {
+    return {
+      apiService: new ApiService(),
+      loading: false,
+      phrases: [],
+    };
+  },
+
+  created() {
+    this.getPhrases();
+  },
+
+  methods: {
+    async getPhrases() {
+      this.loading = true;
+      try {
+        const response = await this.apiService.get('phrase');
+        this.phrases = response.data.content;
+        console.log(this.phrases);
+        this.loading = false;
+      } catch (error) {
+        this.loading = false;
+        this.$toast.error('Ocorreu um problema. ' + error);
+      }
+    },
   },
 };
 </script>
