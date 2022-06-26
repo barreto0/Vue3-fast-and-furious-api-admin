@@ -2,9 +2,7 @@
   <div>
     <div class="h-screen">
       <NavbarVue />
-      <div class="mt-10 text-zinc-100 text-center text-lg font-bold">
-        <p>Ativas<span class="ml-14">Pendentes</span></p>
-      </div>
+
       <div class="mt-5 overflow-x-auto rounded-xl">
         <table class="w-full text-sm text-left text-zinc-100">
           <thead class="text-xs text-zinc-100 uppercase bg-zinc-700">
