@@ -23,28 +23,23 @@ export default class ApiService {
 
   get(url) {
     const headers = this.setHeaders();
-    return axios.get(
-      import.meta.env.VITE_APP_BASE_URL + url,
-      headers
-    );
+    return axios.get(import.meta.env.VITE_APP_BASE_URL + url, {
+      headers: headers,
+    });
   }
 
   post(url, data) {
     const headers = this.setHeaders();
-    return axios.post(
-      import.meta.env.VITE_APP_BASE_URL + url,
-      data,
-      headers
-    );
+    return axios.post(import.meta.env.VITE_APP_BASE_URL + url, data, {
+      headers: headers,
+    });
   }
 
   put(url, data) {
     const headers = this.setHeaders();
-    return axios.put(
-      import.meta.env.VITE_APP_BASE_URL + url,
-      data,
-      headers
-    );
+    return axios.put(import.meta.env.VITE_APP_BASE_URL + url, data, {
+      headers: headers,
+    });
   }
 
   delete(url, data) {
@@ -52,7 +47,9 @@ export default class ApiService {
     return axios.delete(
       import.meta.env.VITE_APP_BASE_URL + url,
       data,
-      headers
+      {
+        headers: headers,
+      }
     );
   }
 }

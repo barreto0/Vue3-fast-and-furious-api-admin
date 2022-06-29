@@ -2,7 +2,20 @@
   <div>
     <div class="h-screen">
       <NavbarVue />
-
+      <div class="grid grid-rows-1 grid-flow-col gap-4">
+        <p
+          @click="$router.push('/register-author')"
+          class="col-span-12 mt-10 text-lg text-right text-zinc-100 cursor-pointer"
+        >
+          + Adicionar autor
+        </p>
+        <p
+          @click="$router.push('/register-quote')"
+          class="col-span-1 mt-10 text-lg text-right text-zinc-100 cursor-pointer"
+        >
+          + Adicionar frase
+        </p>
+      </div>
       <div class="mt-5 overflow-x-auto rounded-xl">
         <table class="w-full text-sm text-left text-zinc-100">
           <thead class="text-xs text-zinc-100 uppercase bg-zinc-700">

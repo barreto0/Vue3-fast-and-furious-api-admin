@@ -4,6 +4,8 @@ import DashboardHome from '../components/dashboard/DashboardHome.vue';
 import ChooseInteractionType from '../components/user/ChooseInteractionType.vue';
 import RegisterQuoteSuggestion from '../components/quotes/RegisterQuoteSuggestion.vue';
 import Analytics from '../components/analytics/Analytics.vue';
+import Documentation from '../components/documentation/Documentation.vue';
+import RegisterAuthor from '../components/authors/RegisterAuthor.vue';
 
 export const routes = [
   {
@@ -16,6 +18,18 @@ export const routes = [
     path: '/register-quote',
     component: RegisterQuoteSuggestion,
     title: 'RegisterQuoteSuggestion',
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/register-author',
+    component: RegisterAuthor,
+    title: 'RegisterAuthor',
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/documentation',
+    component: Documentation,
+    title: 'Documentation',
     meta: { guest: true },
   },
   {

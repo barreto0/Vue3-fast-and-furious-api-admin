@@ -2,12 +2,14 @@
   <div class="grid place-items-center h-screen">
     <div>
       <div class="text-center mb-10">
-        <p class="text-5xl font-bold text-zinc-100">Velozes e Furiosos - API</p>
+        <p class="text-5xl font-bold text-zinc-100">
+          Velozes e Furiosos - API
+        </p>
       </div>
       <div class="text-center mb-10">
         <p class="text-3xl font-bold text-zinc-100">
-          "Velocidade é isso, sentir-se livre. Quando corremos pensamos na
-          vida,<br />
+          "Velocidade é isso, sentir-se livre. Quando corremos
+          pensamos na vida,<br />
           ficamos em silêncio, ouvindo apenas o barulho do motor."
         </p>
         <p class="pt-5 text-xl font-medium text-zinc-100">
@@ -27,7 +29,7 @@
           <p class="font-medium text-xl text-center">Área restrita</p>
         </div>
         <div
-          @click="$router.push('/register-quote')"
+          @click="$router.push('/documentation')"
           class="cursor-pointer bg-zinc-100 rounded-xl shadow-xl p-4 space-y-10"
         >
           <img
@@ -36,7 +38,7 @@
             alt="conhece assento ejetavel"
           />
           <p class="font-medium text-xl text-center">
-            Cadastrar sugestão de frase
+            Documentação da API
           </p>
         </div>
       </div>

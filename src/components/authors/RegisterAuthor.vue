@@ -2,10 +2,10 @@
   <div class="grid h-screen place-items-center">
     <div class="w-1/2">
       <p class="text-center text-5xl font-bold text-zinc-100 mb-5">
-        Cadastrar frase
+        Cadastrar autor
       </p>
       <p class="text-center text-3xl font-bold text-zinc-100 mb-14">
-        "50% de alguma coisa é melhor do que 100% de nada."
+        "MONICAAAAA!!"
       </p>
       <div v-if="loading">
         <p
@@ -18,39 +18,37 @@
         <div class="mb-10">
           <label
             class="block text-zinc-100 text-lg font-bold mb-2"
-            for="Nome do personagem"
+            for="Nome"
           >
             Nome do personagem
           </label>
 
-          <select
+          <input
+            v-model="name"
             class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            v-model="authorId"
-          >
-            <option disabled value="">Selecione o Autor</option>
-            <option v-for="author in authors" :value="author.id">
-              {{ author.name }}
-            </option>
-          </select>
+            id="Nome"
+            type="text"
+            placeholder="Nome"
+          />
         </div>
         <div class="mb-4">
           <label
             class="block text-zinc-100 text-lg font-bold mb-2"
-            for="Frase"
+            for="Filme"
           >
-            Frase
+            Filme
           </label>
           <input
-            v-model="phrase"
+            v-model="movie"
             class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="Frase"
+            id="Filme"
             type="text"
-            placeholder="Frase"
+            placeholder="Filme"
           />
         </div>
         <div class="flex items-center justify-end mt-4">
           <button
-            @click="sendQuoteSugestion()"
+            @click="registerAuthor()"
             class="px-6 py-2 ml-4 font-semibold cursor-pointer text-center focus:outline-none transition hover:shadow-lg shadow hover:bg-zinc-900 rounded-full text-zinc-100 bg-zinc-500"
           >
             Acelera!
@@ -71,21 +69,19 @@
 <script>
 import ApiService from '../../services/ApiService';
 export default {
-  name: 'Register Quote',
+  name: 'Register Author',
 
   data() {
     return {
       apiService: new ApiService(),
       loading: false,
       authors: [],
-      authorId: '',
-      phrase: '',
+      name: '',
+      movie: '',
     };
   },
 
-  created() {
-    this.getAuthors();
-  },
+  created() {},
 
   methods: {
     async getAuthors() {
@@ -101,31 +97,31 @@ export default {
     },
 
     resetVariables() {
-      this.authorId = '';
-      this.phrase = '';
+      this.name = '';
+      this.movie = '';
     },
 
-    async sendQuoteSugestion() {
-      this.loading = true;
-      try {
-        const response = await this.apiService.post('phrase', {
-          text: this.phrase,
-          authorId: this.authorId,
-        });
-        this.loading = false;
-        this.$toast.success(
-          'Sua sugestão foi registrada com sucesso.'
-        );
-        this.resetVariables();
-      } catch (error) {
-        this.loading = false;
-        if (error.response.status === 401) {
-          this.$toast.error('Seu token expirou, logue novamente.');
-        }
-        if (error.response.status !== 401) {
-          this.$toast.error(
-            'Ocorreu um problema ao registrar o autor ' + error
-          );
+    async registerAuthor() {
+      if (this.name !== '' && this.movie !== '') {
+        this.loading = true;
+        try {
+          const response = await this.apiService.post('author', {
+            name: this.name,
+            movie: this.movie,
+          });
+          this.loading = false;
+          this.$toast.success('O autor foi registrado com sucesso.');
+          this.resetVariables();
+        } catch (error) {
+          this.loading = false;
+          if (error.response.status === 401) {
+            this.$toast.error('Seu token expirou, logue novamente.');
+          }
+          if (error.response.status !== 401) {
+            this.$toast.error(
+              'Ocorreu um problema ao registrar o autor ' + error
+            );
+          }
         }
       }
     },
