@@ -16,7 +16,7 @@
           + Adicionar frase
         </p>
       </div>
-      <div class="mt-5 overflow-x-auto rounded-xl">
+      <div v-if="!loading" class="mt-5 overflow-x-auto rounded-xl">
         <table class="w-full text-sm text-left text-zinc-100">
           <thead class="text-xs text-zinc-100 uppercase bg-zinc-700">
             <tr>
@@ -43,17 +43,33 @@
               </th>
               <td class="px-6 py-4">{{ phrase.author.name }}</td>
               <td class="px-6 py-4">{{ phrase.text }}</td>
-              <td class="px-6 py-4">
+              <td v-if="!loadingStatus" class="px-6 py-4">
                 {{ phrase.active ? 'Ativa' : 'Inativa' }}
               </td>
               <td class="px-6 py-4 text-right text-violet-600">
-                <p class="cursor-pointer">
+                <p
+                  @click="changePhraseStatus(phrase.id)"
+                  class="cursor-pointer"
+                >
                   {{ phrase.active ? 'Desativar' : 'Ativar' }}
                 </p>
+              </td>
+              <td
+                v-if="loadingStatus"
+                class="px-6 py-4 text-right text-violet-600"
+              >
+                <p>Mudando status...</p>
               </td>
             </tr>
           </tbody>
         </table>
+      </div>
+      <div v-else>
+        <p
+          class="text-center text-3xl font-bold text-zinc-100 mb-14 underline"
+        >
+          Carregando...
+        </p>
       </div>
     </div>
   </div>
@@ -73,6 +89,7 @@ export default {
     return {
       apiService: new ApiService(),
       loading: false,
+      loadingStatus: false,
       phrases: [],
     };
   },
@@ -91,6 +108,21 @@ export default {
         this.loading = false;
       } catch (error) {
         this.loading = false;
+        this.$toast.error('Ocorreu um problema. ' + error);
+      }
+    },
+
+    async changePhraseStatus(phraseId) {
+      this.loadingStatus = true;
+      try {
+        const response = await this.apiService.get(
+          'phrase/change-phrase-status/' + phraseId
+        );
+        this.$toast.success('Status alterado com sucesso.');
+        this.getPhrases();
+        this.loadingStatus = false;
+      } catch (error) {
+        this.loadingStatus = false;
         this.$toast.error('Ocorreu um problema. ' + error);
       }
     },
